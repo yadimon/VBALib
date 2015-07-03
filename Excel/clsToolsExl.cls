@@ -392,9 +392,9 @@ Public Function SetScreenCalculationProtect(bOnOff As Boolean, Optional sProtPW 
 'reinfolge beim einschalten, ausschalten 'no need? Oo
     If bOnOff Then
         If IsEmpty(sProtPW) Then
-            Call ProtectWorksheet(bOnOff)
+            Call ProtectWorkbook(bOnOff)
         Else
-            Call ProtectWorksheet(bOnOff, sProtPW)
+            Call ProtectWorkbook(bOnOff, sProtPW)
         End If
         Call ExcelCalculation(bOnOff)
         Call SetScreenUpdating(bOnOff)
@@ -403,9 +403,9 @@ Public Function SetScreenCalculationProtect(bOnOff As Boolean, Optional sProtPW 
         Call SetScreenUpdating(bOnOff)
         ExcelCalculation (bOnOff)
         If IsEmpty(sProtPW) Then
-            Call ProtectWorksheet(bOnOff)
+            Call ProtectWorkbook(bOnOff)
         Else
-            Call ProtectWorksheet(bOnOff, sProtPW)
+            Call ProtectWorkbook(bOnOff, sProtPW)
         End If
     End If
 
@@ -535,7 +535,7 @@ Public Function DialogGetPath(Optional bFileOrFolder As Boolean = True, Optional
 End Function
 
 'Blattschutz aufheben, oder wieder einschalten
-Public Sub ProtectWorksheet(bYesNo As Boolean, Optional sProtPW As String = "0000", Optional ByRef wkbWorkbook As Excel.Workbook)
+Public Sub ProtectWorkbook(bYesNo As Boolean, Optional sProtPW As String = "0000", Optional ByRef wkbWorkbook As Excel.Workbook)
     On Error Resume Next
     Dim i As Integer
 
