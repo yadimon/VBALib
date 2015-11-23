@@ -176,6 +176,8 @@ Public Function ArrayPush(ByRef aArray As Variant, Value As Variant) As Variant
     Dim newLength As Long
     Dim minLength As Long
     
+    On Error Resume Next
+    
     If IsEmpty(aArray) Or Not IsArray(aArray) Then
         ReDim aArray(0)
     ElseIf UBound(aArray) = -1 Then
@@ -189,6 +191,8 @@ Public Function ArrayPush(ByRef aArray As Variant, Value As Variant) As Variant
     Call AssignValue(aArray(UBound(aArray)), Value)
     
     ArrayPush = aArray
+    
+    On Error GoTo 0
 End Function
 
 
@@ -1851,7 +1855,7 @@ Public Function RegEx_getStringMatched(sPattern As String, sContent As String, O
         .Multiline = True
         .IgnoreCase = True
         .Pattern = sPattern
-        If .test(sContent) Then
+        If .Test(sContent) Then
             Set aMatch = .Execute(sContent)
             RegEx_getStringMatched = aMatch(0).SubMatches(subMatchNr)
         Else
